@@ -1,0 +1,43 @@
+server:
+  port: 9090
+info:
+  app:
+    encodig: UTF-8
+    java:
+      source: 1.8
+      target: 1.8
+  name:
+    of:
+      app: Invoice Server
+management:
+  endpoints:
+    web:
+      base-path: /invoiceactuator
+  endpoint:
+    health:
+      show-details: always
+spring:
+  application:
+    name: invoice-service
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/invoice
+    username: root
+  main:
+    banner-mode: 'off'
+  security:
+    user:
+      name: admin
+      password: admin
+error:
+  whitelabel:
+    enabled: false
+eureka:
+   instance:
+      hostname: localhost
+   client:
+      serviceUrl:
+        defaultZone: http://localhost:8088/eureka/
